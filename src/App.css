@@ -18,7 +18,10 @@ body {
   justify-content: center;
   align-items: center;
   background-color: rgb(103, 70, 54);
-  height: 80px;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .header-img {
