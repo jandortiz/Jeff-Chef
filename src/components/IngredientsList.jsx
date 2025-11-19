@@ -6,7 +6,7 @@ export default function IngredientsList(props) {
 		
 			{props.ingredientsToDisplay.length > 3 && <div className="get-recipe-container">
 				<div className="get-recipe-info">
-					<h3>¿Estás preparado para crear tu receta?</h3>
+					<h3>¿Preparado para crear tu receta?</h3>
 					<p>Crea tu receta con la lista de ingredientes ingresada</p>
 				</div>
 						
