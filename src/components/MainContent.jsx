@@ -34,6 +34,11 @@ export default function MainContent() {
 		}
 	}
 
+	function clearRecipes() {
+		setMyIngredients(prevIngredient => [])
+		setFinalRecipe(prevRecipe => "")
+	}
+
 
 	return (
 		<main className="main-container">
