@@ -24,7 +24,7 @@ export default function MainContent() {
 
 	function submitMyForm(formData) {
 		const newIngredient = formData.get("ingredient");
-		console.log(newIngredient)
+
 		if (newIngredient.length > 0) {
 			setMyIngredients(prevIngredient => [...prevIngredient, newIngredient]);
 		}
