@@ -1,32 +1,14 @@
-import OpenAI from 'openai'
-import SYSTEM_PROMPT  from './recipePrompt'
-
-
-
-const OpenAIapiKey = import.meta.env.VITE_CHEFF_OPENAI_API_KEY
-
-
-
-const client = new OpenAI({apiKey:OpenAIapiKey, dangerouslyAllowBrowser:true})
-
-
-export async function getRecipeFromOpenAI(ingredientsArr) {
-
-	const openAIResponse = await client.responses.create({
-		model:"chatgpt-4o-latest",
-		input: [
-			{
-				role: "assistant",
-				content: `${SYSTEM_PROMPT}`
-			},
-			{
-				role: "user",
-				content: `I have the following ingredients: ${ingredientsArr.join(" ")}. Please give me a recipe you'd recommend I make!`
-			}
-		]
+export async function getRecipeFromOpenAI(ingredientsArr){
+	const response = await fetch(import.meta.env.VITE_BAKCEND_URL, {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify({ingredients: ingredientsArr})
 	})
-	return openAIResponse['output_text']
+
+	if (!response.ok) {
+		throw new Error("Backend fail")
+	}
+
+	const  data = await response.json()
+	return data.recipe;
 }
-
-
-
